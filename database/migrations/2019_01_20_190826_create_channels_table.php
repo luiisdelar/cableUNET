@@ -16,6 +16,8 @@ class CreateChannelsTable extends Migration
         Schema::create('channels', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->integer('packchannel_id')->unsigned();
+            $table->foreign('packchannel_id')->references('id')->on('packchannels')->onDelete('cascade');
             $table->timestamps();
         });
     }

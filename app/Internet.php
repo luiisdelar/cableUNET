@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Internet extends Model
 {
-    protected $table='internet';
-    protected $fillable=['speed','price'];
+    protected $table='internets';
+    protected $fillable=['speed','price','name'];
+
+    public function packservice(){
+        return $this->hasOne('App\Packservice');
+    }
 }

@@ -1,5 +1,10 @@
 <?php
 
+use App\User;
+use App\Invoice;
+use App\Internet;
+use App\Packservice;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,4 +18,8 @@
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/111',function(){
+    return User::find(2)->packservice;
 });

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTelephonesTable extends Migration
+class CreatePackChannelsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,12 @@ class CreateTelephonesTable extends Migration
      */
     public function up()
     {
-        Schema::create('telephones', function (Blueprint $table) {
+        Schema::create('packchannels', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('minutes');
+            $table->string('name');
             $table->double('price');
+            $table->integer('cable_id')->unsigned();
+            $table->foreign('cable_id')->references('id')->on('cables')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -28,6 +30,6 @@ class CreateTelephonesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('telephones');
+        Schema::dropIfExists('packchannels');
     }
 }

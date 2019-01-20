@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateInternetTable extends Migration
+class CreateTelephonesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,12 @@ class CreateInternetTable extends Migration
      */
     public function up()
     {
-        Schema::create('internet', function (Blueprint $table) {
+        Schema::create('telephones', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name',30);
-            $table->integer('speed');
+            $table->integer('minutes');
             $table->double('price');
-            $table->integer('user_id');
+            $table->string('name',30);
             $table->timestamps();
-
         });
     }
 
@@ -31,6 +29,6 @@ class CreateInternetTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('internet');
+        Schema::dropIfExists('telephones');
     }
 }

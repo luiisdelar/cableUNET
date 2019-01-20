@@ -22,6 +22,8 @@ class CreateUsersTable extends Migration
             $table->string('first_name',30);
             $table->string('last_name',30);
             $table->enum('type',['user','admin'])->default('user');
+            $table->integer('packservice_id')->unsigned()->default('null');
+            $table->foreign('packservice_id')->references('id')->on('packservices')->onDelete('cascade');
             $table->rememberToken();
             $table->timestamps();
         });

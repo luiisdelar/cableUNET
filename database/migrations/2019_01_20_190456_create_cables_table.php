@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProgramationsTable extends Migration
+class CreateCablesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateProgramationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('programations', function (Blueprint $table) {
+        Schema::create('cables', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name',30);
-            $table->string('start_hour',5);
-            $table->string('end_hour',5);
-            $table->integer('day');         
+            $table->string('name');
+            $table->double('price');
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ class CreateProgramationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('programations');
+        Schema::dropIfExists('cables');
     }
 }

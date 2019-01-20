@@ -1,0 +1,6 @@
+INSERT INTO `users`(`username`, `email`, `password`, `first_name`, `last_name`, `type`) 
+VALUES ('luiisdelar','luisortegadlr@gmail.com','qwas','Luis','Ortega','admin');
+
+INSERT INTO `invoices`(`price`, `user_id`) VALUES (20000,2);
+
+INSERT INTO `internets`(`name`, `speed`, `price`) VALUES ('Super fast',10,10000);
