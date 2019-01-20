@@ -18,6 +18,7 @@ class CreateInternetTable extends Migration
             $table->string('name',30);
             $table->integer('speed');
             $table->double('price');
+            $table->integer('user_id');
             $table->timestamps();
 
         });

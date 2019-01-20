@@ -15,6 +15,7 @@ class CreateProgramationsTable extends Migration
     {
         Schema::create('programations', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name',30);
             $table->string('start_hour',5);
             $table->string('end_hour',5);
             $table->integer('day');         
