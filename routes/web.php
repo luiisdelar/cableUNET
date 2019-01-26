@@ -20,6 +20,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/111',function(){
-    return User::find(2)->packservice;
-});
+Route::resource('/users','UserController');

@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
+use App\User;
 
 class UserController extends Controller
 {
@@ -13,7 +13,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -23,7 +23,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view("users/create");
     }
 
     /**
@@ -34,7 +34,9 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user=new User;
+        $user->username=$request->username;
+        $user->save();
     }
 
     /**
