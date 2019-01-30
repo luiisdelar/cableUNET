@@ -5,11 +5,58 @@
 @endsection
 
 @section("container")
-    <h1>Hablen claro que estoy register a user xd</h1>
-    <form action="/users" method="POST">
-        <label>Username:</label>
-        <input type="text"><br>
-        {{csrf_field()}}
-        <input type="submit" value="Accept">       
+    
+    <form action="{{url('/users')}}" method="POST">
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Username</label>
+                    <input class="form-control" type="text" name="username">
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input class="form-control" type="text" name="email">
+                </div>
+            </div>
+        </div>
+
+        <div class="row"> 
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>First Name</label>
+                    <input class="form-control" type="text" name="first_name">
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Last Name</label>
+                    <input class="form-control" type="text" name="last_name">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Password</label>
+                    <input class="form-control" type="password" name="password">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <input class="form-control" type="submit" value="Accept">
+            </div>
+        </div>   
+
+        {{ csrf_field() }}
+        
     </form>
+
 @endsection
