@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Cable;
 
 class CableController extends Controller
 {
@@ -23,7 +24,7 @@ class CableController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -34,7 +35,15 @@ class CableController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $cable=new Cable;
+        $cable->name=$request->name;
+        $cable->price=$request->price;
+        $cable->save();
+        /*
+            Aqui iria una redireccion y un mensaje 
+            pero lo hare cuando instale el paquete
+            flash
+        */ 
     }
 
     /**

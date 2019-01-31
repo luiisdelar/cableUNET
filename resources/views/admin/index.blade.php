@@ -8,20 +8,32 @@
     <h1 class="text-center">Secction of Administration</h1>
     
     <h3>Cable</h3>
-    <form action="">
+    <form action="{{url('/admin/cable')}}" method="POST">
+
         <div class="row">
+
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Name</label>
-                    <input class="form-control" type="text" placeholder="name">    
+                    <input class="form-control" type="text" placeholder="name" name="name">    
+                </div>
+            </div>
+
+            <div class="col-md-4">        
+                <div class="form-group">
+                    <label>Price</label>
+                    <input class="form-control" type="number" value="price $" name="price">
                 </div>            
             </div>
+
         </div>
 
-            <div class="form-group">
-                <input class="btn btn-primary" type="submit" value="Create">
-            </div>     
-    
+        <div class="form-group">
+            <input class="btn btn-primary" type="submit" value="Create">
+        </div>     
+
+        {{ csrf_field() }}
+        
     </form>
 
     <h3>Internet</h3>
@@ -65,11 +77,22 @@
 
         <input class="btn btn-primary" type="submit" value="Create">    
     </form>
-
+  
     <h3>Package Services</h3>
     <form action="">
         <div class="row">
-            <h4>-----------------------</h4>
+    
+            <div class="col-md-4">
+                
+                <label>Internet</label>
+                <select class="form-control">
+                    <option value="">---select a plan---</option>
+                    @foreach($net as $x)
+                        <option value="">{{$x->name}}</option>
+                    @endforeach
+                </select>
+           
+            </div>
         </div>
     </form>
     

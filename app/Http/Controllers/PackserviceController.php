@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Internet;
 
 class PackserviceController extends Controller
 {
@@ -13,7 +14,8 @@ class PackserviceController extends Controller
      */
     public function index()
     {
-        //
+        $net=Internet::all();
+        return view("admin/index",compact("net"));        
     }
 
     /**

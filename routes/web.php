@@ -22,9 +22,9 @@ Route::get('/', function () {
 
 Route::resource('/users','UserController');
 
-Route::get('/admin',function () {
-    return view('admin/index');
-});
+Route::resource('/admin','PackserviceController');
+
+Route::resource('/admin/cable','CableController');
 
 Auth::routes();
 
