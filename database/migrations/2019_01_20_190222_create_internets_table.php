@@ -15,9 +15,9 @@ class CreateInternetsTable extends Migration
     {
         Schema::create('internets', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name',30);
-            $table->integer('speed');
-            $table->double('price');
+            $table->string('name',30)->unique();
+            $table->integer('speed')->required();
+            $table->double('price')->required();
             $table->timestamps();
 
         });

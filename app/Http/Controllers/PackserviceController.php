@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Cable;
 use App\Internet;
+use App\Telephone;
+use App\Channel;
 
 class PackserviceController extends Controller
 {
@@ -15,7 +18,10 @@ class PackserviceController extends Controller
     public function index()
     {
         $net=Internet::all();
-        return view("admin/index",compact("net"));        
+        $tlp=Telephone::all();
+        $cable=Cable::all();
+        $cha=Channel::all();
+        return view("admin/index",compact("net","tlp","cable","cha"));        
     }
 
     /**

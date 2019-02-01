@@ -26,6 +26,10 @@ Route::resource('/admin','PackserviceController');
 
 Route::resource('/admin/cable','CableController');
 
+Route::resource('/admin/internet','InternetController');
+
+Route::resource('/admin/telephone','TelephoneController');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

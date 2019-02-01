@@ -15,8 +15,8 @@ class CreatePackservicesTable extends Migration
     {
         Schema::create('packservices', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name',30);
-            $table->double('price');
+            $table->string('name',30)->unique();
+            $table->double('price')->required();
             $table->integer('internet_id')->unsigned()->default('null');
             $table->integer('telephone_id')->unsigned()->default('null');
             $table->integer('cable_id')->unsigned()->default('null');

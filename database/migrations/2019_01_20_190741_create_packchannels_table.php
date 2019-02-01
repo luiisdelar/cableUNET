@@ -15,8 +15,8 @@ class CreatePackChannelsTable extends Migration
     {
         Schema::create('packchannels', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->double('price');
+            $table->string('name')->unique();
+            $table->double('price')->required();
             $table->integer('cable_id')->unsigned();
             $table->foreign('cable_id')->references('id')->on('cables')->onDelete('cascade');
             $table->timestamps();

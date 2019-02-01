@@ -15,12 +15,12 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('username',30);
+            $table->string('username',30)->unique();
             $table->string('email',30)->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password',30);
-            $table->string('first_name',30);
-            $table->string('last_name',30);
+            $table->string('password',30)->required();
+            $table->string('first_name',30)->required();
+            $table->string('last_name',30)->required();
             $table->enum('type',['user','admin'])->default('user');
             $table->integer('packservice_id')->unsigned()->default('null');
             $table->foreign('packservice_id')->references('id')->on('packservices')->onDelete('cascade');

@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Cable;
+use App\Internet;
+use App\Telephone;
+use App\Channel;
 
 class CableController extends Controller
 {
@@ -39,11 +42,13 @@ class CableController extends Controller
         $cable->name=$request->name;
         $cable->price=$request->price;
         $cable->save();
-        /*
-            Aqui iria una redireccion y un mensaje 
-            pero lo hare cuando instale el paquete
-            flash
-        */ 
+        flash("Cable created!")->success();
+        $net=Internet::all();
+        $tlp=Telephone::all();
+        $cable=Cable::all();
+        $cha=Channel::all();
+     
+        return view('admin/index',compact("net","tlp","cable","cha"));
     }
 
     /**
