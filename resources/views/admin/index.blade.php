@@ -197,7 +197,7 @@
                     <option value="">sdad</option>
                     <option value="">qwert</option>
                     <option value="">sdasc</option>
-                    <option value="">asdko</option>
+                    <option value=""></option>
                 </select>
             </div>
 
