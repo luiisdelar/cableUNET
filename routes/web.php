@@ -36,6 +36,8 @@ Route::resource('/admin/programation','ProgramationController');
 
 Route::resource('/admin/invoice','InvoiceController');
 
+Route::resource('/admin/plan','PlanController');
+
 Auth::routes(); 
 
 Route::get('/home', 'HomeController@index')->name('home');

@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Invoice;
 
-class InvoiceController extends Controller
+class PlanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -35,7 +34,7 @@ class InvoiceController extends Controller
      */
     public function store(Request $request)
     {
-        return view("invoice/index");
+        return view("plan/index");
     }
 
     /**

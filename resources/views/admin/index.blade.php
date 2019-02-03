@@ -11,7 +11,7 @@
     @include('flash::message')
     
     <h3>Cable</h3>
-    <form action="{{url('/admin/cable')}}" method="POST">
+    <form action="{{ route('cable.store')}}" method="POST">
 
         <div class="row">
 
@@ -40,7 +40,7 @@
     </form>
 
     <h3>Internet</h3>
-    <form action="{{url('/admin/internet')}}" method="POST">
+    <form action="{{ route('internet.store')}}" method="POST">
         <div class="row">
             
             <div class="col-md-4">
@@ -75,7 +75,7 @@
     </form>
 
     <h3>Telephone</h3>
-    <form action="{{url('/admin/telephone')}}" method="POST">
+    <form action="{{ route('telephone.store')}}" method="POST">
         
         <div class="row">   
             <div class="col-md-4">
@@ -109,7 +109,7 @@
     </form>
   
     <h3>Package Services</h3>
-    <form action="{{url('/admin')}}" method="POST">
+    <form action="{{ route('admin.store')}}" method="POST">
 
         <div class="row">
             <div class="col-md-4">
@@ -166,7 +166,7 @@
     
 
     <h3>Loading Channels</h3>
-    <form action="{{url('/admin/channel')}}" method="POST">
+    <form action="{{ route('channel.store')}}" method="POST">
         <div class="row">
             <div class="col-md-4">
                 <label>Name</label>
@@ -185,7 +185,7 @@
     </form>
 
     <h3>Loading Programation</h3>
-    <form action="{{url('/admin/programation')}}" method="POST">
+    <form action="{{ route('programation.store')}}" method="POST">
 
         <div class="row">
             <div class="col-md-4">
@@ -242,7 +242,7 @@
 
     </form>
 
-    <form action="{{ url('admin/invoice') }}" method="POST">
+    <form action="{{ route('invoice.index') }}" method="POST">
         <div class="row">
             <div class="col-md-4">               
                 <div class="form-group">
@@ -253,13 +253,14 @@
         </div>
 
         {{ csrf_field() }}
-        
+
     </form>
 
     <h3>Change plans</h3>
-    <form action="">
+    <form action="{{ route('plan.index') }}" method="POST">
+
         <div class="row">
-            <h4>-----------------------</h4>
+            <input type="submit" value="Change of plans" class="btn btn-primary">
         </div>
 
         {{ csrf_field() }}
