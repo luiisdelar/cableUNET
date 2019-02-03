@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Cable;
+use App\Internet;
+use App\Telephone;
+use App\Channel;
 
 class ChannelController extends Controller
 {
@@ -34,7 +38,16 @@ class ChannelController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $chann=new Channel;
+        $chann->name=$request->name;
+        $chann->save();
+        flash('Channel created!')->success();
+        $net=Internet::all();
+        $tlp=Telephone::all();
+        $cable=Cable::all();
+        $cha=Channel::all();
+     
+        return view('admin/index',compact("net","tlp","cable","cha"));
     }
 
     /**

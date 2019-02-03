@@ -26,10 +26,16 @@ Route::resource('/admin','PackserviceController');
 
 Route::resource('/admin/cable','CableController');
 
+Route::resource('/admin/channel','ChannelController');
+
 Route::resource('/admin/internet','InternetController');
 
 Route::resource('/admin/telephone','TelephoneController');
 
-Auth::routes();
+Route::resource('/admin/programation','ProgramationController');
+
+Route::resource('/admin/invoice','InvoiceController');
+
+Auth::routes(); 
 
 Route::get('/home', 'HomeController@index')->name('home');

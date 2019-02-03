@@ -5,7 +5,7 @@
 @endsection
 
 @section("container")
-    
+
     <h1 class="text-center">Secction of Administration</h1>
     
     @include('flash::message')
@@ -25,7 +25,7 @@
             <div class="col-md-4">        
                 <div class="form-group">
                     <label>Price</label>
-                    <input class="form-control" required type="number" value="price $" name="price">
+                    <input class="form-control" required type="number" placeholder="price $" name="price">
                 </div>            
             </div>
 
@@ -109,25 +109,35 @@
     </form>
   
     <h3>Package Services</h3>
-    <form action="">
+    <form action="{{url('/admin')}}" method="POST">
+
+        <div class="row">
+            <div class="col-md-4">
+                <label>Name</label>
+                <div class="form-group">
+                    <input type="text" required class="form-control" name="name" placeholder="name">
+                </div>
+            </div>
+        </div>      
+
         <div class="row">
 
             <div class="col-md-4">
                 <label>Cable</label>
-                <select class="form-control">
+                <select class="form-control" name="cable_id">
                     <option value="">---select a plan---</option>
                     @foreach($cable as $x)
-                        <option value="">{{$x->name}}</option>
+                        <option value="{{$x->id}}">{{$x->name}}</option>
                     @endforeach
                 </select>           
             </div>
 
             <div class="col-md-4">
                 <label>Internet</label>
-                <select class="form-control">
+                <select class="form-control" name="internet_id">
                     <option value="">---select a plan---</option>
                     @foreach($net as $x)
-                        <option value="">{{$x->name}}</option>
+                        <option value="{{$x->id}}">{{$x->name}}</option>
                     @endforeach
                 </select>           
             </div>
@@ -135,10 +145,10 @@
             <div class="col-md-4">
                 <label>Telephone</label>
                 <div class="form-group">
-                    <select class="form-control">
+                    <select class="form-control" name="telephone_id">
                         <option value="">---select a plan---</option>
                         @foreach($tlp as $x)
-                            <option value="">{{$x->name}}</option>
+                            <option value="{{$x->id}}">{{$x->name}}</option>
                         @endforeach
                     </select>
                 </div>           
@@ -156,7 +166,7 @@
     
 
     <h3>Loading Channels</h3>
-    <form action="">
+    <form action="{{url('/admin/channel')}}" method="POST">
         <div class="row">
             <div class="col-md-4">
                 <label>Name</label>
@@ -175,41 +185,51 @@
     </form>
 
     <h3>Loading Programation</h3>
-    <form action="">
+    <form action="{{url('/admin/programation')}}" method="POST">
+
+        <div class="row">
+            <div class="col-md-4">
+                <label>Channel</label>
+                <select name="channel_id" class="form-control">
+                    <option value="">---select a channel---</option>
+                    @foreach($cha as $x)
+                        <option value="{{$x->id}}">{{$x->name}}</option>
+                    @endforeach
+                </select>
+            </div>
+        </div> 
+
         <div class="row">
 
             <div class="col-md-4">
-                <label>Channel</label>
-                <select name="" class="form-control">
-                    <option value="">---select a channel---</option>
-                    @foreach($cha as $x)
-                        <option value="">{{$x->name}}</option>
-                    @endforeach
-                </select>        
+                <label>Name</label>        
+                <div class="form-group">
+                    <input type="text" placeholder="name" name="name" required class="form-control">
+                </div>
             </div>
 
             <div class="col-md-4">
                 <label>Day</label>
-                <select name="" class="form-control">
-                    <option value="">Lunes</option>
-                    <option value="">Martes</option>
-                    <option value="">sad</option>
-                    <option value="">sdad</option>
-                    <option value="">qwert</option>
-                    <option value="">sdasc</option>
-                    <option value=""></option>
+                <select name="day" class="form-control">
+                    <option value="1">Monday</option>
+                    <option value="2">Tuesday</option>
+                    <option value="3">Wednesday</option>
+                    <option value="4">Thursday</option>
+                    <option value="5">Friday</option>
+                    <option value="6">Saturday</option>
+                    <option value="7">Sunday</option>
                 </select>
             </div>
 
             <div class="col-md-2">
                 <label>Start hour</label>
-                <input class="form-control" type="number" required>            
+                <input class="form-control" type="number" required name="start_hour">            
             </div>
 
             <div class="col-md-2">
                 <div class="form-group">
                     <label>End hour</label>
-                    <input class="form-control" type="number" required>            
+                    <input class="form-control" type="number" required name="end_hour">            
                 </div>
             </div>
         </div>
@@ -222,14 +242,18 @@
 
     </form>
 
-    <h3>Invoices</h3>
-    <form action="">
+    <form action="{{ url('admin/invoice') }}" method="POST">
         <div class="row">
-            <h4>-----------------------</h4>
+            <div class="col-md-4">               
+                <div class="form-group">
+                    <h3>Invoices</h3>
+                    <input class="btn btn-primary" type="submit" value="List of invoices">
+                </div>
+            </div>
         </div>
 
         {{ csrf_field() }}
-
+        
     </form>
 
     <h3>Change plans</h3>

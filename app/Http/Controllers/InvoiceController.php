@@ -13,7 +13,7 @@ class InvoiceController extends Controller
      */
     public function index()
     {
-        //
+        return view("invoice/index");
     }
 
     /**
@@ -34,7 +34,7 @@ class InvoiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return view("invoice/index");
     }
 
     /**

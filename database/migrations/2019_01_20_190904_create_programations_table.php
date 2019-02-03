@@ -16,8 +16,8 @@ class CreateProgramationsTable extends Migration
         Schema::create('programations', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name',30)->unique();
-            $table->string('start_hour',5)->required();
-            $table->string('end_hour',5)->required();
+            $table->integer('start_hour')->required();
+            $table->integer('end_hour')->required();
             $table->integer('day')->required();
             $table->integer('channel_id')->unsigned();
             $table->foreign('channel_id')->references('id')->on('channels')->onDelete('cascade');         
