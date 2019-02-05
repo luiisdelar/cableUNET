@@ -11,7 +11,7 @@
     @include('flash::message')
     
     <h3>Cable</h3>
-    <form action="{{ route('cable.store')}}" method="POST">
+    <form action="{{ route('cable/store')}}" method="POST">
 
         <div class="row">
 
@@ -109,7 +109,7 @@
     </form>
   
     <h3>Package Services</h3>
-    <form action="{{ route('admin.store')}}" method="POST">
+    <form action="{{ route('admin') }}" method="POST">
 
         <div class="row">
             <div class="col-md-4">

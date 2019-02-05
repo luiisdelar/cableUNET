@@ -20,11 +20,27 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('/users','UserController');
+//------------Users------------------
 
-Route::resource('/admin','PackserviceController');
+Route::get('/users','UserController@index');
 
-Route::resource('/admin/cable','CableController');
+Route::get('/users/create','UserController@create');
+
+Route::post('/users','UserController@store');
+
+Route::get('/users/plans','PlanController@index');
+
+//---------------Packservice---------------
+
+Route::get('/admin','PackserviceController@index')->name('admin');
+
+Route::post('/admin','PackserviceController@store')->name('admin/store');
+
+//---------------Cable------------------
+
+Route::post('/admin/cable','CableController@store')->name('cable/store');
+
+
 
 Route::resource('/admin/channel','ChannelController');
 
