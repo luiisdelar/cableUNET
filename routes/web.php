@@ -17,43 +17,41 @@ use App\Packservice;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth/login');
 });
 
-//------------Users------------------
+Route::post('login','Auth\LoginController@login')->name('login');
 
+//------------Users------------------
 Route::get('/users','UserController@index');
 
 Route::get('/users/create','UserController@create');
 
 Route::post('/users','UserController@store');
 
-Route::get('/users/plans','PlanController@index');
-
 //---------------Packservice---------------
-
 Route::get('/admin','PackserviceController@index')->name('admin');
 
 Route::post('/admin','PackserviceController@store')->name('admin/store');
 
 //---------------Cable------------------
-
 Route::post('/admin/cable','CableController@store')->name('cable/store');
 
+//------------------Internet--------------
+Route::post('/admin/internet','InternetController@store')->name('internet/store');
 
+//----------------Telephone-------------------
+Route::post('/admin/telephone','TelephoneController@store')->name('telephone/store');
 
-Route::resource('/admin/channel','ChannelController');
+//----------------Channel------------------
+Route::post('/admin/channel','ChannelController@store')->name('channel/store');
 
-Route::resource('/admin/internet','InternetController');
+//-------------------Programation----------------
+Route::post('/admin/programation','ProgramationController@store')->name('programation/store');
 
-Route::resource('/admin/telephone','TelephoneController');
+//------------------Invoice----------------------
+Route::post('/admin/invoice','InvoiceController@store')->name('invoice/store');
 
-Route::resource('/admin/programation','ProgramationController');
+//--------------------Plan------------------
+Route::post('/admin/plan','PlanController@store')->name('plan/store');
 
-Route::resource('/admin/invoice','InvoiceController');
-
-Route::resource('/admin/plan','PlanController');
-
-Auth::routes(); 
-
-Route::get('/home', 'HomeController@index')->name('home');

@@ -40,7 +40,7 @@
     </form>
 
     <h3>Internet</h3>
-    <form action="{{ route('internet.store')}}" method="POST">
+    <form action="{{ route('internet/store')}}" method="POST">
         <div class="row">
             
             <div class="col-md-4">
@@ -75,7 +75,7 @@
     </form>
 
     <h3>Telephone</h3>
-    <form action="{{ route('telephone.store')}}" method="POST">
+    <form action="{{ route('telephone/store')}}" method="POST">
         
         <div class="row">   
             <div class="col-md-4">
@@ -166,7 +166,7 @@
     
 
     <h3>Loading Channels</h3>
-    <form action="{{ route('channel.store')}}" method="POST">
+    <form action="{{ route('channel/store')}}" method="POST">
         <div class="row">
             <div class="col-md-4">
                 <label>Name</label>
@@ -185,7 +185,7 @@
     </form>
 
     <h3>Loading Programation</h3>
-    <form action="{{ route('programation.store')}}" method="POST">
+    <form action="{{ route('programation/store')}}" method="POST">
 
         <div class="row">
             <div class="col-md-4">
@@ -242,7 +242,7 @@
 
     </form>
 
-    <form action="{{ route('invoice.index') }}" method="POST">
+    <form action="{{ route('invoice/store') }}" method="POST">
         <div class="row">
             <div class="col-md-4">               
                 <div class="form-group">
@@ -257,7 +257,7 @@
     </form>
 
     <h3>Change plans</h3>
-    <form action="{{ route('plan.index') }}" method="POST">
+    <form action="{{ route('plan/store') }}" method="POST">
 
         <div class="row">
             <input type="submit" value="Change of plans" class="btn btn-primary">
