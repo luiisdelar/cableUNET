@@ -16,14 +16,14 @@ use App\Packservice;
 |
 */
 
-Route::get('/', function () {
-    return view('auth/login');
-});
+Route::get('/','Auth\LoginController@loggeado');
 
 Route::post('login','Auth\LoginController@login')->name('login');
 
+Route::post('logout','Auth\LoginController@logout')->name('logout');
+
 //------------Users------------------
-Route::get('/users','UserController@index');
+Route::get('/users','UserController@index')->name('user');
 
 Route::get('/users/create','UserController@create');
 

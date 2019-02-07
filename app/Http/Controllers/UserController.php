@@ -3,9 +3,14 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
+use Hash;
 
 class UserController extends Controller
-{
+{   
+
+    public function __construct(){
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +18,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        echo  "JAAAAAAAAAAAAAA";   
+        return view('users/index');
     }
 
     /**
@@ -39,7 +44,7 @@ class UserController extends Controller
         $user->first_name=$request->first_name;
         $user->last_name=$request->last_name;
         $user->email=$request->email;
-        $user->password=$request->password;
+        $user->password=Hash::make($request->password);
         $user->save();
     }
 
