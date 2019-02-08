@@ -14,6 +14,10 @@ class LoginController extends Controller
         $this->middleware('guest',['only'=>'loggeado']);
     }
 
+    public function username(){
+        return 'email';
+    }
+
     public function loggeado(){
         return view('auth/login');
     }
@@ -21,12 +25,12 @@ class LoginController extends Controller
     public function login(){
         
         $credentials=$this->validate(request(),[
-            'email' => 'email|required|string',
+            $this->username() => 'email|required|string',
             'password' => 'required|string'
         ]);
         
         if(Auth::attempt($credentials)){
-            $user=User::where('email',$credentials['email'])->get();
+            $user=User::where($this->username(),$credentials['email'])->get();
             
             if(strcmp($user[0]->type,'user')==0){
                 return  redirect()->route('user');

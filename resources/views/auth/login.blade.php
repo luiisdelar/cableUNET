@@ -6,7 +6,7 @@
 
 @section("container")
 
-    <div class="row">
+    <div class="row justify-content-center">
         <div class="col-md-4 col-md-offset-4">
             <h1>Access application</h1>
             
@@ -31,7 +31,15 @@
                         {!! $errors->first('password','<span class="help-block">:message</span>') !!}                
                    </div>
 
-                   <input type="submit" class="btn btn-primary form-control" value="Log in"> 
+                   <div class="form-group">
+                            <input type="submit" class="btn btn-primary form-control" value="Log in">
+                   </div> 
+                   
+                   
+                   <div class="form-group">
+                            <button class="btn btn-primary form-control">Register</button>
+                   </div> 
+                   
                    {{ csrf_field() }}
             </form>
                

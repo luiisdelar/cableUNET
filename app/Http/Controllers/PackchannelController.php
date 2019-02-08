@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 
 class PackchannelController extends Controller
 {
+
+    public function __construct(){
+        $this->middleware('guest',['only'=>'loggeado']);
+    }
+    
     /**
      * Display a listing of the resource.
      *

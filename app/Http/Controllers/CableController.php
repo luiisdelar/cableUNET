@@ -9,7 +9,11 @@ use App\Telephone;
 use App\Channel;
 
 class CableController extends Controller
-{
+{   
+
+    public function __construct(){
+        $this->middleware('guest',['only'=>'loggeado']);
+    }
 
     /**
      * Store a newly created resource in storage.
