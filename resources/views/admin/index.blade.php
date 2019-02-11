@@ -1,43 +1,62 @@
 @extends("../templates/template")
 
 @section("header")
+    <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav">
+        
+                  <li class="nav-item active">
+                      <a class="nav-link" href="#">Admin: {{ auth()->user()->username}} <span class="sr-only">(current)</span></a>
+                  </li>
+                  
+              </ul>
+    </div>
     
+    <form action="{{ route('logout') }}" method="POST">
+        {{ csrf_field() }}
+        <button class="btn btn-danger">Logout</button>
+    </form>   
+
+     
 @endsection
 
 @section("container")
 
-    <h1 class="text-center">Secction of Administration</h1>
-    
+    <div class="title" style="background: gray;">
+        <h1 class="text-center">Secction of Administration and Creation</h1>
+    </div>
+
     @include('flash::message')
     
-    <h3>Cable</h3>
-    <form action="{{ route('cable/store')}}" method="POST">
+    <div class="card">  
+        <h3 class="card-title">Cable</h3>
+        <form class="card-body" action="{{ route('cable/store')}}" method="POST">
 
-        <div class="row">
+            <div class="row">
 
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label>Name</label>
-                    <input class="form-control" required type="text" placeholder="name" name="name">    
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input class="form-control" required type="text" placeholder="name" name="name">    
+                    </div>
                 </div>
+
+                <div class="col-md-4">        
+                    <div class="form-group">
+                        <label>Price</label>
+                        <input class="form-control" required type="number" placeholder="price $" name="price">
+                    </div>            
+                </div>
+
             </div>
 
-            <div class="col-md-4">        
-                <div class="form-group">
-                    <label>Price</label>
-                    <input class="form-control" required type="number" placeholder="price $" name="price">
-                </div>            
-            </div>
+            <div class="form-group">
+                <input class="btn btn-primary" type="submit" required value="Create">
+            </div>     
 
-        </div>
-
-        <div class="form-group">
-            <input class="btn btn-primary" type="submit" required value="Create">
-        </div>     
-
-        {{ csrf_field() }}
-        
-    </form>
+            {{ csrf_field() }}
+            
+        </form>
+    </div>
 
     <h3>Internet</h3>
     <form action="{{ route('internet/store')}}" method="POST">

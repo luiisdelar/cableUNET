@@ -1,7 +1,13 @@
 @extends("../templates/template")
 
 @section("header")
-    
+       <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav">
+                  <li class="nav-item active">
+                      <a class="nav-link" target=blank href="http://www.luisortega.com.ve">My page <span class="sr-only">(current)</span></a>
+                  </li>
+              </ul>
+       </div>
 @endsection
 
 @section("container")
