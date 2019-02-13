@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Invoice;
+use App\User;
 
 class InvoiceController extends Controller
 {
-    
     /**
      * Store a newly created resource in storage.
      *
@@ -15,8 +15,9 @@ class InvoiceController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        return view("invoice/index");
+    {   
+        $user=User::all();
+        return view("invoice/index",compact('user'));
     }
 
 }

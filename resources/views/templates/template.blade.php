@@ -29,8 +29,7 @@
 
             @yield("header")    
 
-        </nav>
-        
+        </nav>       
 
     </div>    
 

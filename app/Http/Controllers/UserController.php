@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use Hash;
+use App\Cable;
+use App\Internet;
+use App\Telephone;
+use App\Packservice;
 
 class UserController extends Controller
 {   
@@ -18,7 +22,11 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('users/index');
+        $cable=Cable::all();
+        $net=Internet::all();
+        $tlf=Telephone::all();
+        $pack=Packservice::all();
+        return view('users/index',compact("cable","net","tlf","pack"));
     }
 
     /**
