@@ -11,10 +11,9 @@
 
 @section("container")
     
-    <h4>Bienvenido {{ auth()->user()->username}}</h4>
-
+    <h4>Bienvenido {{ auth()->user()->username }}</h4>
+    
     <h3>Plans</h3>
-
 
     <div class="card">
         <div class="card-header">
@@ -26,9 +25,13 @@
                 <form class="col-md-4" action="">               
                         <label for="">Cable</label>
                         <div class="form-group">
+ 
                             <select name="" id="" class="form-control custom-select">
                                 @foreach($cable as $x)
-                                    <option value="">{{ $x->name }} - {{ $x->price }} $</option>        
+                                    @if(auth()->user()->cable_id != $x->id)
+                                        <option value="">{{ $x->name }} - {{ $x->price }} $</option>                                    
+                                    @endif
+                                    
                                 @endforeach
                             </select>
                         </div>
@@ -78,41 +81,67 @@
         </div>
 
         <div class="card-body">
-            <form class="ow" action="">
+            <form action="#" method="POST"> 
                     
                     @foreach($pack as $x)
-                    <label for="">Name: {{$x->name}}</label>
-                    <div class="form-group col-md-3">
-                        <label for="">Internet</label>
-                            @foreach($net as $n)
-                                 @if($x->internet_id == $n->id)
-                                     <input class="form-control" type="text" readonly value="{{ $n->name }}">
-                                 @endif
+                    <h4>Name: {{$x->name}}</h4>
+                    
+                    <div class="row">
 
-                                 @if($x->internet_id == NULL)
+                        <div class="form-group col-md-3">
+                            
+                            <label for="">Internet</label>
+                                @if($x->internet_id == NULL)
+                                        <input class="form-control" type="text" readonly value="-">
+                                @endif
+
+                                @foreach($net as $n)
+
+                                    @if($x->internet_id == $n->id)
+                                        <input class="form-control" type="text" readonly value="{{$n->name}} - {{$n->speed}}Mb/s - {{$n->price}}$">
+                                    @endif
+      
+                                @endforeach
+                        
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <label for="">Cable</label>
+                                @if($x->cable_id == NULL)
                                     <input class="form-control" type="text" readonly value="-">
-                                 @endif      
-                            @endforeach
+                                @endif
+                                
+                                @foreach($cable as $c)
+
+                                    @if($x->cable_id == $c->id)
+                                        <input class="form-control" type="text" readonly value="{{$c->name}} - {{$c->price}}$"> 
+                                    @endif
+
+                                @endforeach
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <label for="">Telephone</label>
+                                @if($x->telephone_id == NULL)
+                                    <input class="form-control" type="text" readonly value="-">
+                                @endif
+
+                                @foreach($tlf as $t)
+                                    @if($x->telephone_id == $t->id)
+                                        <input class="form-control" type="text" readonly value="{{$t->name}} - {{$t->minutes}} minutes - {{$t->price}}$">
+                                    @endif      
+                                @endforeach
+                        </div>
                     </div>
 
-                    <div class="form-group col-md-3">
-                        <label for="">Cable</label>
-                            @foreach($cable as $c)
-                                 @if($x->cable_id == $c->id)
-                                     <input class="form-control" type="text" readonly value="{{ $c->name }}">
-                                 @endif      
-                            @endforeach
-                    </div>
-
-                    <div class="form-group col-md-3">
-                        <label for="">Telephone</label>
-                            @foreach($tlf as $t)
-                                 @if($x->tlephone_id == $t->id)
-                                     <input class="form-control" type="text" readonly value="{{ $t->name }}">
-                                 @endif      
-                            @endforeach
-                    </div>
-
+                    <div class="form-group">
+                        @if(auth()->user()->packservice_id == $x->id)
+                            <input type="submit" value="Actuel" disabled class="btn btn-primary">
+                        @else
+                            <input type="submit" value="Buy" class="btn btn-primary">
+                        @endif
+                    </div>    
+                    <hr>
                     @endforeach
 
                     

@@ -23,6 +23,9 @@ class CreateUsersTable extends Migration
             $table->string('last_name',30)->required();
             $table->enum('type',['user','admin'])->default('user');
             $table->integer('packservice_id')->unsigned()->default('null');
+            $table->integer('cable_id')->unsigned()->default('null');
+            $table->integer('internet_id')->unsigned()->default('null');
+            $table->integer('telephone_id')->unsigned()->default('null');
             $table->foreign('packservice_id')->references('id')->on('packservices')->onDelete('cascade');
             $table->rememberToken();
             $table->timestamps();

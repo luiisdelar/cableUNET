@@ -8,6 +8,7 @@ use App\Cable;
 use App\Internet;
 use App\Telephone;
 use App\Packservice;
+use App\Plan;
 
 class UserController extends Controller
 {   
@@ -26,7 +27,8 @@ class UserController extends Controller
         $net=Internet::all();
         $tlf=Telephone::all();
         $pack=Packservice::all();
-        return view('users/index',compact("cable","net","tlf","pack"));
+        $plan=Plan::all();
+        return view('users/index',compact("cable","net","tlf","pack","plan"));
     }
 
     /**
