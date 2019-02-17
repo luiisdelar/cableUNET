@@ -320,7 +320,7 @@
     </form>
 
     <h3>Change plans</h3>
-    <form action="{{ route('plan/store') }}" method="POST">
+    <form action="#" method="POST">
 
         <div class="row">
             <input type="submit" value="Change of plans" class="btn btn-primary">
