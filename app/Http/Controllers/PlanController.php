@@ -66,5 +66,10 @@ class PlanController extends Controller
         return view("users/index",compact("cable","net","tlf","pack","plan"));
     }
 
-    
+    public function authorization(){
+        $plans=Plan::all();
+        $users=User::all();
+
+        return view("admin/plans",compact("plans","users"));
+    }
 }

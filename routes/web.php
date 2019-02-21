@@ -54,3 +54,5 @@ Route::post('/admin/invoice','InvoiceController@store')->name('invoice/store');
 
 //--------------------Plan------------------
 Route::post('/users/plan','PlanController@store')->name('plan/store');
+
+Route::post('/admin/plans','PlanController@authorization')->name('admin/plans');

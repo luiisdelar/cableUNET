@@ -1,5 +1,13 @@
 @extends("../templates/template")
 
+@section("logo")
+        <nav class="navbar navbar-light bg-light">
+            <a class="navbar-brand" href="{!!route('admin')!!}">CableUNET
+            <img src="{{{ asset('faviconunet.ico') }}}" width="30" height="30" class="d-inline-block align-top" alt="">      
+            </a>
+        </nav>       
+@endsection
+
 @section("header")
     <div class="collapse navbar-collapse" id="navbarNav">
               <ul class="navbar-nav">
@@ -320,7 +328,7 @@
     </form>
 
     <h3>Change plans</h3>
-    <form action="#" method="POST">
+    <form action="{{ route('admin/plans') }}" method="POST">
 
         <div class="row">
             <input type="submit" value="Change of plans" class="btn btn-primary">
