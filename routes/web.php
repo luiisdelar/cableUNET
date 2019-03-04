@@ -16,7 +16,7 @@ use App\Packservice;
 |
 */
 
-Route::get('/','Auth\LoginController@loggeado');
+Route::get('/','Auth\LoginController@loggeado')->name('start');
 
 Route::post('login','Auth\LoginController@login')->name('login');
 
@@ -25,7 +25,7 @@ Route::post('logout','Auth\LoginController@logout')->name('logout');
 //------------Users------------------
 Route::get('/users','UserController@index')->name('user');
 
-Route::get('/users/create','UserController@create');
+Route::get('/users/create','UserController@create')->name('user/create');
 
 Route::post('/users','UserController@store');
 
@@ -56,3 +56,5 @@ Route::post('/admin/invoice','InvoiceController@store')->name('invoice/store');
 Route::post('/users/plan','PlanController@store')->name('plan/store');
 
 Route::post('/admin/plans','PlanController@authorization')->name('admin/plans');
+
+Route::post('/admin/plans/accept','PlanController@accept')->name('admin/plans/accept');

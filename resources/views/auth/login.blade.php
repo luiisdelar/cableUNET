@@ -43,7 +43,7 @@
                    
                    
                    <div class="form-group">
-                            <button class="btn btn-primary form-control">Register</button>
+                   <input class="btn btn-primary form-control" type="button" value="Register" onclick="location.href='{!!route('user/create')!!}';">  
                    </div> 
                    
                    {{ csrf_field() }}

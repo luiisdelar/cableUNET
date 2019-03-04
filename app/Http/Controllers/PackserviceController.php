@@ -8,6 +8,7 @@ use App\Internet;
 use App\Telephone;
 use App\Channel;
 use App\Packservice;
+use Auth;
 
 class PackserviceController extends Controller
 {
@@ -27,7 +28,14 @@ class PackserviceController extends Controller
         $tlp=Telephone::all();
         $cable=Cable::all();
         $cha=Channel::all();
-        return view("admin/index",compact("net","tlp","cable","cha"));        
+        
+        if(strcmp(auth()->user()->type,"admin")==0){
+            return view("admin/index",compact("net","tlp","cable","cha"));        
+        }else{
+            Auth::logout();
+            return redirect('/');
+        }
+        
     }
 
     /**

@@ -20,10 +20,6 @@ class CreatePlansTable extends Migration
             $table->integer('internet_id')->default('null');
             $table->integer('telephone_id')->default('null');
             $table->integer('packservice_id')->default('null');
-            $table->integer('ncable_id')->default('null');
-            $table->integer('ninternet_id')->default('null');
-            $table->integer('ntelephone_id')->default('null');
-            $table->integer('npackservice_id')->default('null');
             $table->timestamps();
         });
     }
