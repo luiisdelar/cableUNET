@@ -27,7 +27,7 @@ class CableController extends Controller
         $cable->name=$request->name;
         $cable->price=$request->price;
         $cable->save();
-        flash("Cable created!")->success();
+        flash("Cable created!")->success()->important();
         $net=Internet::all();
         $tlp=Telephone::all();
         $cable=Cable::all();

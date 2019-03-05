@@ -23,7 +23,7 @@ class TelephoneController extends Controller
         $tel->minutes=$request->minutes;
         $tel->price=$request->price;
         $tel->save();
-        flash('Plan Telephone created')->success();
+        flash('Plan Telephone created')->success()->important();
         $net=Internet::all();
         $tlp=Telephone::all();
         $cable=Cable::all();

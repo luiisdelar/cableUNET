@@ -9,18 +9,60 @@
 @endsection
 
 @section("header")
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav row">
+                <div class="col-md-4 form-group">
+                    <button class="btn">User: {{ auth()->user()->username }}</button>
+                </div>
+              
+                <div class="col-md-4 form-group">
+                    @php
+                        $p=App\Packservice::find(auth()->user()->packservice_id);
+                        $c=App\Cable::find(auth()->user()->cable_id);
+                        $i=App\Internet::find(auth()->user()->internet_id);
+                        $t=App\Telephone::find(auth()->user()->telephone_id);
+                        $total=0;
+                        if(isset($p)){
+                            $total+=$p->price;    
+                        }
+                        if(isset($c)){
+                            $total+=$c->price;    
+                        }
+                        if(isset($i)){
+                            $total+=$i->price;    
+                        }
+                        if(isset($t)){
+                            $total+=$t->price;    
+                        }
+                    @endphp
+                    
+                    @if($total)
+                        <button class="btn">Cost plans: {{$total}} $</button>
+                    @else
+                        <button class="btn">Cost plans: 0 $</button>
+                    @endif    
+                    
+                </div>
 
-    <form action="{{ route('logout') }}" method="POST">
-        {{ csrf_field() }}
-        <button class="btn btn-danger">Logout</button>
-    </form>    
+                <div class="col-md-4 form-group">
+                    <form action="{{ route('logout') }}" method="POST">
+                        {{ csrf_field() }}
+                        <div class="col-md-6 ">
+                        <button class="btn btn-danger">Logout</button>
+                        </div>
+                    </form>      
+                </div>
 
+        </ul>
+    </div>
+     
 @endsection
+
 
 @section("container")
     
-    <h4>Bienvenido {{ auth()->user()->username }}</h4>
     @include('flash::message')
+ 
     <h3>Plans</h3>
 
     <div class="card">
@@ -115,7 +157,7 @@
                                     @if(auth()->user()->telephone_id != $x->id)
                                         <option value="{{$x->id}}">{{$x->name}} - {{$x->minutes}} minutes - {{$x->price}}$</option>        
                                     @else
-                                        {!! $c="Active: $x->name"; !!}
+                                        {!! $cc="Active: $x->name"; !!}
                                     @endif   
                                 @endforeach
                             </select>
@@ -124,9 +166,9 @@
                             <input type="submit" value="Buy" class="btn btn-primary form-control">
                         </div> 
 
-                    @if(isset($c))
+                    @if(isset($cc))
                         <div class="alert alert-success" role="alert">
-                            {{ $c }}
+                            {{ $cc }}
                         </div>
                     @endif
 
@@ -226,7 +268,4 @@
         </div>
     </div>
 
-    <div>
-        Invoice
-    </div>   
 @endsection

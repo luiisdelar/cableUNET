@@ -51,13 +51,12 @@ class PackserviceController extends Controller
         $packs->internet_id=$request->internet_id;
         $packs->cable_id=$request->cable_id;
         $packs->telephone_id=$request->telephone_id;
-        /**
-         * Aqui se asigna el precio del package 
-         * pero no lo hare aun 
-         */
-        $packs->price=100;
+        $cab=Cable::find($request->cable_id);
+        $tel=Telephone::find($request->telephone_id);
+        $int=Internet::find($request->internet_id);
+        $packs->price=$cab->price+$tel->price+$int->price;
         $packs->save();
-        flash('Package of services created!')->success();
+        flash('Package of services created!')->success()->important();
         $net=Internet::all();
         $tlp=Telephone::all();
         $cable=Cable::all();

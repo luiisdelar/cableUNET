@@ -1,10 +1,18 @@
 @extends("../templates/template")
 
+@section("logo")
+        <nav class="navbar navbar-light bg-light">
+            <a class="navbar-brand" href="{!!route('start')!!}">CableUNET
+            <img src="{{{ asset('faviconunet.ico') }}}" width="30" height="30" class="d-inline-block align-top" alt="">      
+            </a>
+        </nav>       
+@endsection
+
 @section("header")
        <div class="collapse navbar-collapse" id="navbarNav">
               <ul class="navbar-nav">
                   <li class="nav-item active">
-                      <a class="nav-link" target=blank href="http://www.luisortega.com.ve">My page <span class="sr-only">(current)</span></a>
+                      <a class="nav-link" target=blank href="http://www.luisortega.com.ve">luisortega.com.ve <span class="sr-only">(current)</span></a>
                   </li>
               </ul>
        </div>

@@ -9,21 +9,27 @@
 @endsection
 
 @section("header")
-    <div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav">
-        
-                  <li class="nav-item active">
-                      <a class="nav-link" href="#">Admin: {{ auth()->user()->username}} <span class="sr-only">(current)</span></a>
-                  </li>
-                  
-              </ul>
-    </div>
-    
-    <form action="{{ route('logout') }}" method="POST">
-        {{ csrf_field() }}
-        <button class="btn btn-danger">Logout</button>
-    </form>   
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav row">
+                <li class="nav-item active col-md-4 form-group">
+                    <button class="btn">Admin: {{ auth()->user()->username }}</button>
+                </li>
+              
+                <li class="col-md-4 form-group">
+                    <form action="{{ route('admin/plans') }}" method="POST">
+                        <input type="submit" value="Change of plans" class="btn btn-primary">
+                        {{ csrf_field() }}
+                    </form>    
+                </li>
 
+                <li class="col-md-4 form-group">
+                    <form action="{{ route('logout') }}" method="POST">
+                        {{ csrf_field() }}
+                        <button class="btn btn-danger">Logout</button>
+                    </form>      
+                </li>
+        </ul>
+    </div>
      
 @endsection
 
@@ -321,17 +327,6 @@
                     <input class="btn btn-primary" type="submit" value="List of invoices">
                 </div>
             </div>
-        </div>
-
-        {{ csrf_field() }}
-
-    </form>
-
-    <h3>Change plans</h3>
-    <form action="{{ route('admin/plans') }}" method="POST">
-
-        <div class="row">
-            <input type="submit" value="Change of plans" class="btn btn-primary">
         </div>
 
         {{ csrf_field() }}

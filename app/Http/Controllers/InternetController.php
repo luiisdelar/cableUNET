@@ -23,7 +23,7 @@ class InternetController extends Controller
         $internet->speed=$request->speed;
         $internet->price=$request->price;
         $internet->save();
-        flash('Plan Internet created')->success();
+        flash('Plan Internet created')->success()->important();
         $net=Internet::all();
         $tlp=Telephone::all();
         $cable=Cable::all();
