@@ -9,21 +9,49 @@
 @endsection
 
 @section("header")
-    <div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav">        
-                  <li class="nav-item active">
-                      <a class="nav-link" href="#">Admin: {{ auth()->user()->username}} <span class="sr-only">(current)</span></a>
-                  </li>
-              </ul>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <div class="navbar-nav row">
+
+                <div class="col-md">
+                    <form action="{{ route('admin') }}" method="GET">
+                        <div class="form-group">
+                            <input type="submit" value="Admin: {{ auth()->user()->username }}" class="btn form-control">
+                        </div>
+                        {{ csrf_field() }}
+                    </form>    
+                </div>
+
+              
+                <div class="col-md">
+                    <form action="{{ route('admin/plans') }}" method="GET">
+                        <div class="form-group">
+                            <input type="submit" value="Change of plans" class="btn btn-primary form-control">
+                        </div>
+                        {{ csrf_field() }}
+                    </form>    
+                </div>
+
+                <div class="col-md">
+                    <form action="{{ route('invoice') }}" method="GET">
+                        <div class="form-group">
+                            <input class="btn btn-primary form-control" type="submit" value="List of invoices">
+                        </div>
+                        {{ csrf_field() }}
+                    </form>
+                </div>
+                
+                <div class="col-md">
+                    <form action="{{ route('logout') }}" method="POST">
+                        <div class="form-group">
+                            <input class="btn btn-danger form-control" type="submit" value="Logout">
+                        </div>
+                        {{ csrf_field() }}
+                    </form>
+                </div>
+        </div>
     </div>
-    
-    <form action="{{ route('logout') }}" method="POST">
-        {{ csrf_field() }}
-        <button class="btn btn-danger">Logout</button>
-    </form>   
      
 @endsection
-
 @section("container")
 
     <h3>Authorization of Plans</h3>
@@ -175,6 +203,7 @@
         
         </table>
 
+        {!! $plans->render() !!}
                     
     </div>                
 

@@ -10,32 +10,54 @@
 
 @section("header")
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <ul class="navbar-nav row">
-                <li class="nav-item active col-md-4 form-group">
-                    <button class="btn">Admin: {{ auth()->user()->username }}</button>
-                </li>
+        <div class="navbar-nav row">
+                <div class="col-md form-group">
+                    <input type="button" class="btn form-control" value="Admin: {{ auth()->user()->username }}">
+                </div>
               
-                <li class="col-md-4 form-group">
-                    <form action="{{ route('admin/plans') }}" method="POST">
-                        <input type="submit" value="Change of plans" class="btn btn-primary">
+                <div class="col-md">
+                    <form action="{{ route('admin/plans') }}" method="GET">
+                        <div class="form-group">
+                            <input type="submit" value="Change of plans" class="btn btn-primary form-control">
+                        </div>
                         {{ csrf_field() }}
                     </form>    
-                </li>
+                </div>
 
-                <li class="col-md-4 form-group">
-                    <form action="{{ route('logout') }}" method="POST">
+                <div class="col-md">
+                    <form action="{{ route('invoice') }}" method="GET">
+                        <div class="form-group">
+                            <input class="btn btn-primary form-control" type="submit" value="List of invoices">
+                        </div>
                         {{ csrf_field() }}
-                        <button class="btn btn-danger">Logout</button>
-                    </form>      
-                </li>
-        </ul>
+                    </form>
+                </div>
+
+                <div class="col-md">
+                    <form action="{{ route('members') }}" method="GET">
+                        <div class="form-group">
+                            <input class="btn btn-success form-control" type="submit" value="Users">
+                        </div>
+                        {{ csrf_field() }}
+                    </form>
+                </div>
+
+                <div class="col-md">
+                    <form action="{{ route('logout') }}" method="POST">
+                        <div class="form-group">
+                            <input class="btn btn-danger form-control" type="submit" value="Logout">
+                        </div>
+                        {{ csrf_field() }}
+                    </form>
+                </div>
+        </div>
     </div>
      
 @endsection
 
 @section("container")
 
-    <div class="title" style="background: gray;">
+    <div class="title">
         <h1 class="text-center">Secction of Administration and Creation</h1>
     </div>
 
@@ -251,95 +273,5 @@
 
         </form>
     </div>
-
-    <hr>
-
-    <div class="card">
-        <div class="card-header">
-            <h4>Loading Programation</h4>
-        </div>
-
-        <form class="card-body" action="{{ route('programation/store')}}" method="POST">
-            <div class="row">
-                <div class="col-md-4">
-                    <label>Channel</label>
-                    <select name="channel_id" class="form-control">
-                        <option value="">---select a channel---</option>
-                        @foreach($cha as $x)
-                            <option value="{{$x->id}}">{{$x->name}}</option>
-                        @endforeach
-                    </select>
-                </div>
-            </div> 
-
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label>Name</label>        
-                        <input type="text" placeholder="name" name="name" required class="form-control">
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label>Day</label>
-                        <select name="day" class="form-control">
-                            <option value="1">Monday</option>
-                            <option value="2">Tuesday</option>
-                            <option value="3">Wednesday</option>
-                            <option value="4">Thursday</option>
-                            <option value="5">Friday</option>
-                            <option value="6">Saturday</option>
-                            <option value="7">Sunday</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label>Start hour</label>
-                        <input class="form-control" type="number" required name="start_hour">            
-                    </div>
-                </div>
-
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label>End hour</label>
-                        <input class="form-control" type="number" required name="end_hour">            
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <input class="btn btn-primary" type="submit" value="Load">
-            </div>
-
-            {{ csrf_field() }}
-
-        </form>
-    </div>
     
-    <form action="{{ route('invoice/store') }}" method="POST">
-        <div class="row">
-            <div class="col-md-4">               
-                <div class="form-group">
-                    <h3>Invoices</h3>
-                    <input class="btn btn-primary" type="submit" value="List of invoices">
-                </div>
-            </div>
-        </div>
-
-        {{ csrf_field() }}
-
-    </form>
-
-    <h3>Admin users</h3>
-    <form action="">
-        <div class="row">
-            <h4>-----------------------</h4>
-        </div>
-
-        {{ csrf_field() }}
-
-    </form>
 @endsection    

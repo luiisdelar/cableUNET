@@ -58,4 +58,9 @@ class UserController extends Controller
         $user->save();
     }
 
+    public function list(){
+        $us=User::orderBy('id','asc')->paginate(8);
+        return view('admin/list',compact("us"));
+    }
+
 }

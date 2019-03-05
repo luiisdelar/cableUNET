@@ -33,7 +33,16 @@
                         {{ csrf_field() }}
                     </form>
                 </div>
-                
+
+                <div class="col-md">
+                    <form action="{{ route('members') }}" method="GET">
+                        <div class="form-group">
+                            <input class="btn btn-success form-control" type="submit" value="Users">
+                        </div>
+                        {{ csrf_field() }}
+                    </form>
+                </div>
+     
                 <div class="col-md">
                     <form action="{{ route('logout') }}" method="POST">
                         <div class="form-group">
@@ -48,57 +57,5 @@
 @endsection
 
 @section("container")
-    
-    <hr>  
-    
-    <div class="card">
-        <div class="card-header">
-            <h3 class="text-center">Invoices monthly</h3>
-        </div>
 
-        <div class="card-body">
-            <div class="row ">
-                <div class="col-md">
-                    <div class="row justify-content-center">
-                        <label><b>User</b></label>                    
-                    </div>
-
-                </div>
-
-                <div class="col-md">
-                    <div class="row justify-content-center">
-                        <label><b>Pay</b></label>
-                    </div>    
-                </div>
-            </div>    
-            @foreach($user as $x)
-                
-                 <div class="row">
-                    <div class="col-md">
-                        <div class="row justify-content-center">
-                            <label>{{ $x->username }}</label>
-                        </div>    
-                    </div>
-
-                    <div class="col-md">
-                    @php
-                        $p=App\Packservice::find($x->packservice_id);
-                        $c=App\Cable::find($x->cable_id);
-                        $i=App\Internet::find($x->internet_id);
-                        $t=App\Telephone::find($x->telephone_id);
-                        $total=0;
-                        if(isset($p)){  $total+=$p->price;  }
-                        if(isset($c)){  $total+=$c->price;  }
-                        if(isset($i)){  $total+=$i->price;  }
-                        if(isset($t)){  $total+=$t->price;  }
-                    @endphp
-                        <div class="row justify-content-center">
-                            <label for="">{{ $total }} $</label>
-                        </div>    
-                    </div>
-                 </div>   
-            @endforeach
-        </div>
-    </div>
-    {!! $user->render() !!}
-@endsection
+@endsection    

@@ -11,44 +11,37 @@
 @section("header")
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav row">
-                <div class="col-md-4 form-group">
-                    <button class="btn">User: {{ auth()->user()->username }}</button>
+                <div class="col-md form-group">
+                    <input class="btn form-control" value="User: {{ auth()->user()->username }}">
                 </div>
-              
-                <div class="col-md-4 form-group">
+
+                <div class="col-md">
+                    <div class="form-group">    
                     @php
                         $p=App\Packservice::find(auth()->user()->packservice_id);
                         $c=App\Cable::find(auth()->user()->cable_id);
                         $i=App\Internet::find(auth()->user()->internet_id);
                         $t=App\Telephone::find(auth()->user()->telephone_id);
                         $total=0;
-                        if(isset($p)){
-                            $total+=$p->price;    
-                        }
-                        if(isset($c)){
-                            $total+=$c->price;    
-                        }
-                        if(isset($i)){
-                            $total+=$i->price;    
-                        }
-                        if(isset($t)){
-                            $total+=$t->price;    
-                        }
+                        if(isset($p)){  $total+=$p->price;  }
+                        if(isset($c)){  $total+=$c->price;  }
+                        if(isset($i)){  $total+=$i->price;  }
+                        if(isset($t)){  $total+=$t->price;  }
                     @endphp
-                    
+                                
                     @if($total)
-                        <button class="btn">Cost plans: {{$total}} $</button>
+                        <input class="btn form-control" value="Invoice: {{$total}} $">
                     @else
-                        <button class="btn">Cost plans: 0 $</button>
+                        <input class="btn form-control" value="Invoice: {{$total}} $">
                     @endif    
-                    
-                </div>
+                    </div>       
+                </div>    
 
-                <div class="col-md-4 form-group">
+                <div class="col-md">
                     <form action="{{ route('logout') }}" method="POST">
                         {{ csrf_field() }}
-                        <div class="col-md-6 ">
-                        <button class="btn btn-danger">Logout</button>
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-danger form-control" value="Logout">
                         </div>
                     </form>      
                 </div>

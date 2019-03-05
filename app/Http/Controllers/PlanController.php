@@ -67,7 +67,7 @@ class PlanController extends Controller
     }
 
     public function authorization(){
-        $plans=Plan::all();
+        $plans=Plan::orderBy('id','asc')->paginate(4);
         $users=User::all();
 
         return view("admin/plans",compact("plans","users"));

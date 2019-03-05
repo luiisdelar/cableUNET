@@ -34,6 +34,8 @@ Route::get('/admin','PackserviceController@index')->name('admin');
 
 Route::post('/admin','PackserviceController@store')->name('admin/store');
 
+Route::get('/admin/users','UserController@list')->name('members');
+
 //---------------Cable------------------
 Route::post('/admin/cable','CableController@store')->name('cable/store');
 
@@ -50,11 +52,11 @@ Route::post('/admin/channel','ChannelController@store')->name('channel/store');
 Route::post('/admin/programation','ProgramationController@store')->name('programation/store');
 
 //------------------Invoice----------------------
-Route::post('/admin/invoice','InvoiceController@store')->name('invoice/store');
+Route::get('/admin/invoice','InvoiceController@index')->name('invoice');
 
 //--------------------Plan------------------
 Route::post('/users/plan','PlanController@store')->name('plan/store');
 
-Route::post('/admin/plans','PlanController@authorization')->name('admin/plans');
+Route::get('/admin/plans','PlanController@authorization')->name('admin/plans');
 
 Route::post('/admin/plans/accept','PlanController@accept')->name('admin/plans/accept');
