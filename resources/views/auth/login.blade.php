@@ -22,7 +22,7 @@
 
     <div class="row justify-content-center">
         <div class="col-md-4 col-md-offset-4">
-            <h1>Access application</h1>
+            <h1 class="text-center">Access Application</h1>
             
             <form action="{{ route('login') }}" method="POST">
 
@@ -46,7 +46,7 @@
                    </div>
 
                    <div class="form-group">
-                            <input type="submit" class="btn btn-primary form-control" value="Log in">
+                        <input type="submit" class="btn btn-primary form-control" value="Log in">
                    </div> 
                    
                    

@@ -59,7 +59,25 @@ class UserController extends Controller
     }
 
     public function list(){
-        $us=User::orderBy('id','asc')->paginate(8);
+        $us=User::orderBy('id','asc')->paginate(4);
+        return view('admin/list',compact("us"));
+    }
+
+    public function request(Request $request){
+        $xxx=User::find($request->user_id);
+
+        if(isset($request->user)){
+            $xxx->type="user";
+            if($request->user_id==$request->user_auth){
+                $xxx->save();
+                return redirect('admin');
+            }
+        }else{
+            $xxx->type="admin";
+        }
+        
+        $xxx->save();
+        $us=User::orderBy('id','asc')->paginate(4);
         return view('admin/list',compact("us"));
     }
 

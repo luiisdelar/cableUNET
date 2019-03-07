@@ -203,8 +203,10 @@
         
         </table>
 
-        {!! $plans->render() !!}
-                    
+        <div class="row justify-content-center">
+            {!! $plans->render() !!}
+        </div>            
+
     </div>                
 
 

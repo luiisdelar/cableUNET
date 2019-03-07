@@ -29,6 +29,8 @@ Route::get('/users/create','UserController@create')->name('user/create');
 
 Route::post('/users','UserController@store');
 
+Route::post('/admin/users/request','UserController@request')->name('admin/users/request');
+
 //---------------Packservice---------------
 Route::get('/admin','PackserviceController@index')->name('admin');
 

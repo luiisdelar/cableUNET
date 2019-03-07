@@ -58,14 +58,14 @@
 
         <div class="card-body">
             <div class="row ">
-                <div class="col-md">
+                <div class="col">
                     <div class="row justify-content-center">
                         <label><b>User</b></label>                    
                     </div>
 
                 </div>
 
-                <div class="col-md">
+                <div class="col">
                     <div class="row justify-content-center">
                         <label><b>Pay</b></label>
                     </div>    
@@ -74,13 +74,13 @@
             @foreach($user as $x)
                 
                  <div class="row">
-                    <div class="col-md">
+                    <div class="col">
                         <div class="row justify-content-center">
                             <label>{{ $x->username }}</label>
                         </div>    
                     </div>
 
-                    <div class="col-md">
+                    <div class="col">
                     @php
                         $p=App\Packservice::find($x->packservice_id);
                         $c=App\Cable::find($x->cable_id);
@@ -100,5 +100,8 @@
             @endforeach
         </div>
     </div>
-    {!! $user->render() !!}
+    <br>
+    <div class="row justify-content-center">
+        {!! $user->render() !!} 
+    </div>
 @endsection

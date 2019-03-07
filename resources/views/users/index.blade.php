@@ -11,8 +11,14 @@
 @section("header")
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav row">
-                <div class="col-md form-group">
-                    <input class="btn form-control" value="User: {{ auth()->user()->username }}">
+                
+                <div class="col-md">
+                    <form action="{{ route('user') }}" method="GET">
+                        <div class="form-group">
+                            <input readonly type="submit" value="User: {{ auth()->user()->username }}" class="btn form-control">
+                        </div>
+                        {{ csrf_field() }}
+                    </form>    
                 </div>
 
                 <div class="col-md">
@@ -30,9 +36,9 @@
                     @endphp
                                 
                     @if($total)
-                        <input class="btn form-control" value="Invoice: {{$total}} $">
+                        <input readonly class="btn form-control" value="Invoice: {{$total}} $">
                     @else
-                        <input class="btn form-control" value="Invoice: {{$total}} $">
+                        <input readonly class="btn form-control" value="Invoice: {{$total}} $">
                     @endif    
                     </div>       
                 </div>    
@@ -56,7 +62,7 @@
     
     @include('flash::message')
  
-    <h3>Plans</h3>
+    <h2 class="text-center">Plans</h2>
 
     <div class="card">
         <div class="card-header">
