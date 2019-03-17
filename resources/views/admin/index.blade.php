@@ -207,7 +207,7 @@
 
                 <div class="col-md-4">
                     <label>Cable</label>
-                    <select class="form-control" name="cable_id">
+                    <select class="form-control custom-select" name="cable_id">
                         <option value="">---select a plan---</option>
                         @foreach($cable as $x)
                             <option value="{{$x->id}}">{{$x->name}}</option>
@@ -217,7 +217,7 @@
 
                 <div class="col-md-4">
                     <label>Internet</label>
-                    <select class="form-control" name="internet_id">
+                    <select class="form-control custom-select" name="internet_id">
                         <option value="">---select a plan---</option>
                         @foreach($net as $x)
                             <option value="{{$x->id}}">{{$x->name}}</option>
@@ -228,7 +228,7 @@
                 <div class="col-md-4">
                     <label>Telephone</label>
                     <div class="form-group">
-                        <select class="form-control" name="telephone_id">
+                        <select class="form-control custom-select" name="telephone_id">
                             <option value="">---select a plan---</option>
                             @foreach($tlp as $x)
                                 <option value="{{$x->id}}">{{$x->name}}</option>
@@ -273,5 +273,55 @@
 
         </form>
     </div>
+
+    <hr>
+
+    <div class="card">
+        <div class="card-header">
+            <h4>Packague Channels</h4>
+        </div>
+        
+        <form class="card-body" action="{{ route('channel/store')}}" method="POST">
+            <div class="row">
+                <div class="col-md-4">
+                    <label>Name</label>
+                    <div class="form-group">
+                        <input type="text" placeholder="name" name="name" required class="form-control">
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <label>Cable</label>
+                    <div class="form-group">
+                        <select class="form-control custom-select" name="chanel" id="">
+                            @foreach($cable as $cab)
+                                <option value="{{$cab->id}}">{{$cab->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <label>Channel</label>
+                    <div class="form-group">
+                        <select class="form-control custom-select" name="chanel" id="">
+                            @foreach($cha as $channel)
+                                <option value="{{$channel->id}}">{{$channel->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" required>
+                <input type="submit" value="+" class="btn btn-primary" required>
+            </div>
+            {{ csrf_field() }}
+
+        </form>
+    </div>
     
+
 @endsection    

@@ -192,6 +192,33 @@
 
     <hr>
 
+    @php
+        $packs_cha=App\Packchannel::find(auth()->user()->cable_id);
+    @endphp
+
+    @if(isset($packs_cha))
+
+        <div class="card">
+            <div class="card-header">
+                <h3>Package of channels</h3>
+            </div>
+
+            <div class="card-body">
+                
+                <label>Packages</label>
+                <select class="form-control" name="" id="">
+
+                    @foreach($packs_cha as $pc)
+                        <option value="">{{ $pc->name }} - {{ $pc->price }}</option>        
+                    @endforeach
+                
+                </select>
+            </div>
+        </div>
+
+        <hr>
+    @endif
+
     <div class="card">
         <div class="card-header">
             <h5>Select package</h5>
