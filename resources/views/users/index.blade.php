@@ -192,12 +192,6 @@
 
     <hr>
 
-    @php
-        $packs_cha=App\Packchannel::find(auth()->user()->cable_id);
-    @endphp
-
-    @if(isset($packs_cha))
-
         <div class="card">
             <div class="card-header">
                 <h3>Package of channels</h3>
@@ -206,18 +200,32 @@
             <div class="card-body">
                 
                 <label>Packages</label>
+                
+                <div class="form-group"> 
                 <select class="form-control" name="" id="">
 
-                    @foreach($packs_cha as $pc)
-                        <option value="">{{ $pc->name }} - {{ $pc->price }}</option>        
+                    @foreach($packcha as $pc)
+                        
+                        @if($pc->cable_id == auth()->user()->cable_id)
+                            $msg="Active: " . $pc->name ;
+                        
+                        @endif
+                        <option value="">{{ $pc->name }} - Price: {{ $pc->price }} $</option>        
+                        
                     @endforeach
                 
                 </select>
+                </div>
+
+                @if(isset($msg))
+                    <div class="alert alert-success" role="alert">
+                        active: user
+                    </div>
+                @endif   
             </div>
         </div>
 
         <hr>
-    @endif
 
     <div class="card">
         <div class="card-header">
