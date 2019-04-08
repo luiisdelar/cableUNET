@@ -28,7 +28,9 @@
                         $c=App\Cable::find(auth()->user()->cable_id);
                         $i=App\Internet::find(auth()->user()->internet_id);
                         $t=App\Telephone::find(auth()->user()->telephone_id);
+                        $pch=App\Packchannel::find(auth()->user()->packchannel_id);
                         $total=0;
+                        if(isset($pch)){  $total+=$pch->price;  }
                         if(isset($p)){  $total+=$p->price;  }
                         if(isset($c)){  $total+=$c->price;  }
                         if(isset($i)){  $total+=$i->price;  }
@@ -192,49 +194,65 @@
 
     <hr>
 
+    @if(isset(auth()->user()->cable_id))
+
         <div class="card">
             <div class="card-header">
                 <h3>Package of channels</h3>
             </div>
-
+ 
             <div class="card-body">
                 
                 <label>Packages</label>
                 
                 <div class="form-group"> 
-                <select class="form-control" name="" id="">
+                <form action="{{ route('users/packchannel') }}"  method="POST">
+                    @php
+                        $ayuda=App\Cable::find(auth()->user()->cable_id)->packchannels;
+                        //dd($ayuda);
+                    @endphp
 
-                    @foreach($packcha as $pc)
-                        
-                        @if($pc->cable_id == auth()->user()->cable_id)
-                            $msg="Active: " . $pc->name ;
-                        
-                        @endif
-                        <option value="">{{ $pc->name }} - Price: {{ $pc->price }} $</option>        
-                        
-                    @endforeach
-                
-                </select>
-                </div>
+                    <div class="form-group">
+                        <select class="form-control" name="packchannel_id">
 
-                @if(isset($msg))
-                    <div class="alert alert-success" role="alert">
-                        active: user
+                            @foreach($ayuda as $ay)
+                                @if(auth()->user()->packchannel_id!=$ay->id)
+                                    <option value="{{$ay->id}}">{{ $ay->name }}</option>
+                                @endif   
+                            @endforeach
+
+                        </select>
                     </div>
-                @endif   
+                    
+                    <div class="form-group">
+                        <input class="btn btn-primary" type="submit" value="Buy">
+                    </div>
+                    <input type="hidden" value="{{auth()->user()->id}}" name="user_id">
+                    
+                    @if(isset(auth()->user()->packchannel_id))
+                        <div class="alert alert-success" role="alert">
+                            @php
+                                $msg=App\Packchannel::find(auth()->user()->packchannel_id);
+                            @endphp
+                            Package active: {{ $msg->name }}
+                        </div>
+                    @endif
+                    {{ csrf_field() }}
+                </form>
+                </div>
             </div>
         </div>
+    @endif
 
-        <hr>
+    <hr>
 
     <div class="card">
         <div class="card-header">
             <h5>Select package</h5>
         </div>
 
-        <div class="card-body">
-                    
-                    @foreach($pack as $x)
+        <div class="card-body">        
+            @foreach($pack as $x)
             <form action="{{ route('plan/store') }}" method="POST"> 
                     <h4>Name: {{$x->name}}</h4>
                    
@@ -248,11 +266,9 @@
                                 @endif
 
                                 @foreach($net as $n)
-
                                     @if($x->internet_id == $n->id)
                                         <input class="form-control" type="text" readonly value="{{$n->name}} - {{$n->speed}}Mb/s - {{$n->price}}$">
                                     @endif
-      
                                 @endforeach
                         
                         </div>
@@ -264,11 +280,9 @@
                                 @endif
                                 
                                 @foreach($cable as $c)
-
                                     @if($x->cable_id == $c->id)
                                         <input class="form-control" type="text" readonly value="{{$c->name}} - {{$c->price}}$"> 
                                     @endif
-
                                 @endforeach
                         </div>
 

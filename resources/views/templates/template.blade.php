@@ -29,7 +29,7 @@
 
     </div>    
 
-    <main class="container">
+    <main class="container v">
         
         @if(session()->has('flash'))
             <div class="alert alert-info">{{ session('flash') }}</div>

@@ -33,6 +33,21 @@ class UserController extends Controller
         return view('users/index',compact("cable","net","tlf","pack","plan","packcha"));
     }
 
+    public function packChannel(Request $request){
+        $user=User::find($request->user_id);
+        $user->packchannel_id=$request->packchannel_id;
+        $user->save();
+        
+        $cable=Cable::all();
+        $net=Internet::all();
+        $tlf=Telephone::all();
+        $pack=Packservice::all();
+        $plan=Plan::all();
+        $packcha=Packchannel::all();
+        flash('Package of channels adquired!')->success()->important();
+        return view('users/index',compact("cable","net","tlf","pack","plan","packcha"));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
