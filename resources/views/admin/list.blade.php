@@ -1,11 +1,7 @@
 @extends("../templates/template")
 
 @section("logo")
-        <nav class="navbar navbar-light bg-light">
-            <a class="navbar-brand" href="{!!route('admin')!!}">CableUNET
-            <img src="{{{ asset('faviconunet.ico') }}}" width="30" height="30" class="d-inline-block align-top" alt="">      
-            </a>
-        </nav>       
+        <a class="navbar-brand" href="{!!route('admin')!!}">       
 @endsection
 
 
