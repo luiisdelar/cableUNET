@@ -1,11 +1,8 @@
+<!--POR HACER: centrar elementos de celdas de la tabla con flexbox-->
 @extends("../templates/template")
 
 @section("logo")
-        <nav class="navbar navbar-light bg-light">
-            <a class="navbar-brand" href="{!!route('admin')!!}">CableUNET
-            <img src="{{{ asset('faviconunet.ico') }}}" width="30" height="30" class="d-inline-block align-top" alt="">      
-            </a>
-        </nav>       
+       <a class="navbar-brand" href="{!!route('admin')!!}">       
 @endsection
 
 @section("header")
@@ -41,6 +38,15 @@
                 </div>
                 
                 <div class="col-md">
+                    <form action="{{ route('members') }}" method="GET">
+                        <div class="form-group">
+                            <input class="btn btn-success form-control" type="submit" value="Users">
+                        </div>
+                        {{ csrf_field() }}
+                    </form>
+                </div>
+
+                <div class="col-md">
                     <form action="{{ route('logout') }}" method="POST">
                         <div class="form-group">
                             <input class="btn btn-danger form-control" type="submit" value="Logout">
@@ -52,10 +58,15 @@
     </div>
      
 @endsection
-@section("container")
 
-    <h3>Authorization of Plans</h3>
+@section("container")
+    
+    <div class="title">
+        <h3 class="text-center title">Authorization of Plans</h3>
+    </div>
+    
     @include('flash::message')
+
     <div class="table-responsive">
         <table class="table table-dark table-striped table-bordered table-hover">
             <thead>
@@ -76,8 +87,10 @@
                             $us=App\User::find($plan->user_id);
                         @endphp
 
-                        <td>
-                            {{ $us->username }}
+                        <td class="align-items-center">
+                            <div >
+                                <label>{{ $us->username }}</label>             
+                            </div>
                         </td>
 
                         <td>

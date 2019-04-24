@@ -1,18 +1,14 @@
 @extends("../templates/template")
 
 @section("logo")
-        <nav class="navbar navbar-light bg-light">
-            <a class="navbar-brand" href="{!!route('start')!!}">CableUNET
-            <img src="{{{ asset('faviconunet.ico') }}}" width="30" height="30" class="d-inline-block align-top" alt="">      
-            </a>
-        </nav>       
+        <a class="navbar-brand" href="{!!route('start')!!}">
 @endsection
 
 @section("header")
        <div class="collapse navbar-collapse" id="navbarNav">
               <ul class="navbar-nav">
                   <li class="nav-item active">
-                      <a class="nav-link" target=blank href="http://www.luisortega.com.ve">luisortega.com.ve <span class="sr-only">(current)</span></a>
+                      <a class="nav-link" target=blank href="http://www.luisortega.com.ve">>> luisortega.com.ve <<<span class="sr-only">(current)</span></a>
                   </li>
               </ul>
        </div>
@@ -23,7 +19,7 @@
     <div class="row justify-content-center">
         <div class="col-md-4 col-md-offset-4">
             <h1 class="text-center">Access Application</h1>
-            
+            @include('flash::message')
             <form action="{{ route('login') }}" method="POST">
 
                    <div class="form-group {{ $errors->has('email') ? 'is-invalid' : '' }}">

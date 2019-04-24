@@ -1,3 +1,21 @@
 .container {
-    min-height: 100%;
+    min-height: 82vh;
+}
+
+nav {
+    background-color: #c9c7c7;
+}
+
+.logounet {
+    border-radius: 4%;
+    background-color: #c9c7c7;
+}
+
+.navboton{
+    background-color: white;
+    color: black;
+}
+
+.spc {
+    padding-top: 1%;
 }

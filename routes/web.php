@@ -31,6 +31,10 @@ Route::post('/users','UserController@store');
 
 Route::post('/admin/users/request','UserController@request')->name('admin/users/request');
 
+//------------------Packchannel----------------------
+
+Route::post('/users/packchannel','UserController@packChannel')->name('users/packchannel');
+
 //---------------Packservice---------------
 Route::get('/admin','PackserviceController@index')->name('admin');
 

@@ -9,7 +9,7 @@ use App\Internet;
 use App\Telephone;
 use App\Packservice;
 use App\Plan;
-use App\Packchannel;
+use App\Channel;
 
 class UserController extends Controller
 {   
@@ -29,7 +29,22 @@ class UserController extends Controller
         $tlf=Telephone::all();
         $pack=Packservice::all();
         $plan=Plan::all();
+        $cha=Channel::all();
+        return view('users/index',compact("cable","net","tlf","pack","plan","cha"));
+    }
+
+    public function packChannel(Request $request){
+        $user=User::find($request->user_id);
+        $user->packchannel_id=$request->packchannel_id;
+        $user->save();
+        
+        $cable=Cable::all();
+        $net=Internet::all();
+        $tlf=Telephone::all();
+        $pack=Packservice::all();
+        $plan=Plan::all();
         $packcha=Packchannel::all();
+        flash('Package of channels adquired!')->success()->important();
         return view('users/index',compact("cable","net","tlf","pack","plan","packcha"));
     }
 
@@ -57,7 +72,13 @@ class UserController extends Controller
         $user->last_name=$request->last_name;
         $user->email=$request->email;
         $user->password=Hash::make($request->password);
-        $user->save();
+        //validar error guardando email duplicado
+        try{
+            $user->save();
+        }catch(Illuminate\Database\QueryException $e){
+            echo "error guardando";
+        }
+        
     }
 
     public function list(){
