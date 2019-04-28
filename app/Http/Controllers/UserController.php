@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
+
 use App\User;
 use Hash;
 use App\Cable;
@@ -57,7 +58,16 @@ class UserController extends Controller
         $user->last_name=$request->last_name;
         $user->email=$request->email;
         $user->password=Hash::make($request->password);
-        $user->save();
+        
+        try{ 
+            $user->save();              
+        }catch(\Illuminate\Database\QueryException $ex){ 
+            flash('Email duplicate in system')->error()->important();
+            return view('users/create');
+        }
+
+        flash('User registrer!')->success()->important();
+        return view('auth/login');
     }
 
     public function list(){

@@ -20,6 +20,8 @@
             <h4>Register</h4>
         </div>
 
+        @include('flash::message')
+
         <div class="card-body">
             <form action="{{url('/users')}}" method="POST">
 
