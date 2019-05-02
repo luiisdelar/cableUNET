@@ -15,11 +15,17 @@
 
     <div class="header">
         
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg">
             
-            @yield("logo")
             
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <nav class="logounet navbar">    
+                <!--a class="navbar-brand" href="{!!route('admin')!!}">CableUNET-->
+                    @yield("logo")
+                    <img src="{{{ asset('faviconunet.ico') }}}" width="30" height="30" class="d-inline-block align-top" alt="unet">      
+                </a>
+            </nav>
+
+            <button class="navboton navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -29,7 +35,7 @@
 
     </div>    
 
-    <main class="container">
+    <main class="container v">
         
         @if(session()->has('flash'))
             <div class="alert alert-info">{{ session('flash') }}</div>
@@ -41,9 +47,8 @@
         
 
     <footer class="footer">
-        <p>Footer is a element of page. Footer is a element of page.
-           Footer is a element of page. Footer is a element of page.
-           Footer is a element of page. Footer is a element of page. 
+        <p class="text-center">
+            Luis Eduardo Ortega De La Rosa, 2019.  
         </p>
         @yield("footer")
     </footer>

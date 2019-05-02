@@ -81,15 +81,15 @@ class PlanController extends Controller
             $user->cable_id=$request->cable_id;
             $plan->cable_id=null;
         }
-        else if(isset($request->internet_id)){
+        if(isset($request->internet_id)){
             $user->internet_id=$request->internet_id;
             $plan->internet_id=null;
         }
-        else if(isset($request->telephone_id)){
+        if(isset($request->telephone_id)){
             $user->telephone_id=$request->telephone_id;
             $plan->telephone_id=null;
         }
-        else if(isset($request->packservice_id)){
+        if(isset($request->packservice_id)){
             $user->packservice_id=$request->packservice_id;
             $plan->packservice_id=null;
         }
@@ -97,7 +97,7 @@ class PlanController extends Controller
         $user->save();
         $plan->save();
         flash("Changes aprobbate!")->success()->important();
-        $plans=Plan::all();
+        $plans=Plan::orderBy('id','asc')->paginate(4);
         $users=User::all();
         return view("admin/plans",compact("plans","users"));
     }

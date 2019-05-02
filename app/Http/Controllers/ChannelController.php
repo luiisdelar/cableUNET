@@ -20,8 +20,9 @@ class ChannelController extends Controller
     {
         $chann=new Channel;
         $chann->name=$request->name;
+        $chann->stars=$request->stars;
         $chann->save();
-        flash('Channel created!')->success();
+        flash('Channel created!')->success()->important();
         $net=Internet::all();
         $tlp=Telephone::all();
         $cable=Cable::all();

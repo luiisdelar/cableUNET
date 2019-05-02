@@ -1,11 +1,7 @@
 @extends("../templates/template")
 
 @section("logo")
-        <nav class="navbar navbar-light bg-light">
-            <a class="navbar-brand" href="{!!route('admin')!!}">CableUNET
-            <img src="{{{ asset('faviconunet.ico') }}}" width="30" height="30" class="d-inline-block align-top" alt="">      
-            </a>
-        </nav>       
+        <a class="navbar-brand" href="{!!route('admin')!!}">           
 @endsection
 
 
@@ -35,6 +31,15 @@
                 </div>
                 
                 <div class="col-md">
+                    <form action="{{ route('members') }}" method="GET">
+                        <div class="form-group">
+                            <input class="btn btn-success form-control" type="submit" value="Users">
+                        </div>
+                        {{ csrf_field() }}
+                    </form>
+                </div>
+
+                <div class="col-md">
                     <form action="{{ route('logout') }}" method="POST">
                         <div class="form-group">
                             <input class="btn btn-danger form-control" type="submit" value="Logout">
@@ -49,8 +54,7 @@
 
 @section("container")
     
-    <hr>  
-    
+    <br>
     <div class="card">
         <div class="card-header">
             <h3 class="text-center">Invoices monthly</h3>

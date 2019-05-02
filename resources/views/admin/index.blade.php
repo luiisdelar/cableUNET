@@ -1,11 +1,7 @@
 @extends("../templates/template")
 
 @section("logo")
-        <nav class="navbar navbar-light bg-light">
-            <a class="navbar-brand" href="{!!route('admin')!!}">CableUNET
-            <img src="{{{ asset('faviconunet.ico') }}}" width="30" height="30" class="d-inline-block align-top" alt="">      
-            </a>
-        </nav>       
+    <a class="navbar-brand" href="{!!route('admin')!!}">       
 @endsection
 
 @section("header")
@@ -263,6 +259,19 @@
                         <input type="text" placeholder="name" name="name" required class="form-control">
                     </div>
                 </div>
+
+                <div class="col-md-4">
+                    <label>Category</label>
+                    <div class="form-group">
+                        <select class="form-control" name="stars">
+                            <option value="1">X</option>
+                            <option value="2">X X</option>
+                            <option value="3">X X X</option>
+                            <option value="4">X X X X</option>
+                            <option value="5">X X X X X</option>
+                        </select>
+                    </div>
+                </div>
             </div>
 
             <div class="form-group">
@@ -275,53 +284,4 @@
     </div>
 
     <hr>
-
-    <div class="card">
-        <div class="card-header">
-            <h4>Packague Channels</h4>
-        </div>
-        
-        <form class="card-body" action="{{ route('channel/store')}}" method="POST">
-            <div class="row">
-                <div class="col-md-4">
-                    <label>Name</label>
-                    <div class="form-group">
-                        <input type="text" placeholder="name" name="name" required class="form-control">
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <label>Cable</label>
-                    <div class="form-group">
-                        <select class="form-control custom-select" name="chanel" id="">
-                            @foreach($cable as $cab)
-                                <option value="{{$cab->id}}">{{$cab->name}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <label>Channel</label>
-                    <div class="form-group">
-                        <select class="form-control custom-select" name="chanel" id="">
-                            @foreach($cha as $channel)
-                                <option value="{{$channel->id}}">{{$channel->name}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" required>
-                <input type="submit" value="+" class="btn btn-primary" required>
-            </div>
-            {{ csrf_field() }}
-
-        </form>
-    </div>
-    
-
 @endsection    
