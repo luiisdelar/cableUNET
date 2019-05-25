@@ -9,6 +9,7 @@ use App\Telephone;
 use App\Packservice;
 use App\Plan;
 use App\User;
+use App\Channel;
 
 class PlanController extends Controller
 {
@@ -63,7 +64,8 @@ class PlanController extends Controller
         $tlf=Telephone::all();
         $pack=Packservice::all();
         $plan=Plan::all();
-        return view("users/index",compact("cable","net","tlf","pack","plan"));
+        $cha=Channel::all();
+        return view("users/index",compact("cable","net","tlf","pack","plan","cha"));
     }
 
     public function authorization(){
